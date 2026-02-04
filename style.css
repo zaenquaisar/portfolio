@@ -1,4 +1,4 @@
-/* GLOBAL STYLES - Applies to entire site */
+/* GLOBAL STYLES */
 * {
     margin: 0;
     padding: 0;
@@ -7,48 +7,48 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #1a2332; /* EDIT: Dark blue-gray background */
-    color: #e8e8e8; /* EDIT: Light text color */
+    background-color: #1a2332;
+    color: #e8e8e8;
     line-height: 1.6;
 }
 
-/* NAVIGATION BAR - Persistent across all pages */
+/* NAVIGATION BUTTONS - Only visible on non-home pages */
 .navbar {
+    display: none; /* Hidden by default, shown by JavaScript */
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: #0d1520; /* EDIT: Darker nav background */
+    background-color: rgba(13, 21, 32, 0.95);
     padding: 1rem 2rem;
     z-index: 1000;
-    border-bottom: 2px solid #2a5a8f; /* EDIT: Blue accent border */
+    border-bottom: 1px solid #2a5a8f;
 }
 
 .nav-content {
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
     display: flex;
     gap: 2rem;
     align-items: center;
+    justify-content: center;
 }
 
 .nav-link {
     color: #e8e8e8;
     text-decoration: none;
     padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: all 0.3s ease;
     background: none;
     border: none;
     cursor: pointer;
     font-size: 1rem;
+    transition: color 0.3s ease;
 }
 
 .nav-link:hover {
-    background-color: #2a5a8f; /* EDIT: Blue hover effect */
-    color: #fffef0; /* EDIT: Light yellow on hover */
+    color: #2a5a8f;
 }
 
-/* DROPDOWN MENU for Projects */
+/* DROPDOWN MENU - Stays open while hovering */
 .dropdown {
     position: relative;
 }
@@ -60,27 +60,28 @@ body {
     font-size: 1rem;
     cursor: pointer;
     padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: all 0.3s ease;
+    transition: color 0.3s ease;
 }
 
 .dropdown-btn:hover {
-    background-color: #2a5a8f;
-    color: #fffef0;
+    color: #2a5a8f;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #0d1520;
-    min-width: 200px;
+    min-width: 180px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
     border-radius: 4px;
     margin-top: 0.5rem;
     overflow: hidden;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content,
+.dropdown-content:hover {
     display: block;
 }
 
@@ -97,28 +98,30 @@ body {
     color: #fffef0;
 }
 
-/* SECTION VISIBILITY - Only one section shows at a time */
+/* SECTION VISIBILITY */
 .section {
     display: none;
     min-height: 100vh;
-    padding-top: 80px; /* Space for fixed navbar */
-    padding-bottom: 100px; /* Space for footer */
+    padding-top: 80px;
+    padding-bottom: 100px;
 }
 
 .section.active {
     display: block;
 }
 
-/* HOME SECTION */
+/* HOME SECTION - Full background image */
 #home {
     background-image: url('images/hero-pic.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     position: relative;
+    padding-top: 0;
+    display: flex;
+    align-items: flex-end;
 }
 
-/* Dark overlay so text is readable */
 #home::before {
     content: '';
     position: absolute;
@@ -126,7 +129,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.2); /* EDIT: Adjust darkness (0.6 = 60% dark) */
+    background-color: rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
@@ -137,53 +140,103 @@ body {
     text-align: center;
     position: relative;
     z-index: 2;
+    width: 100%;
 }
 
-.hero-image {
-    display: none; /* Hides the circular image */
+.home-text {
+    margin-bottom: 3rem;
 }
 
 .home-text h1 {
-    font-size: 3rem;
-    color: #fffef0; /* EDIT: Light yellow for main heading */
-    margin-bottom: 0.5rem;
+    font-size: 3.5rem;
+    color: #fffef0;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
 .home-text h2 {
     font-size: 1.8rem;
-    color: #2a5a8f; /* EDIT: Blue for school */
+    color: #ffffff; /* White for university */
     margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 .home-text h3 {
     font-size: 1.3rem;
-    color: #4a9d5f; /* EDIT: Dark green for degrees */
-    margin-bottom: 1.5rem;
+    color: #ffffff; /* White for degrees */
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
 }
 
-.intro {
-    font-size: 1.2rem;
-    max-width: 700px;
-    margin: 0 auto 2rem;
-    color: #c8c8c8;
-    line-height: 1.8;
-}
-
-/* BUTTONS */
+/* HOME PAGE BUTTONS */
 .home-buttons {
     display: flex;
     gap: 2rem;
     justify-content: center;
-    margin-top: 3rem;
+    margin-top: 2rem;
 }
 
+.btn-home {
+    background-color: #2a5a8f;
+    color: #fffef0;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 4px; /* Less rounded */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(42, 90, 143, 0.4);
+}
+
+.btn-home:hover {
+    background-color: #1f4570;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(42, 90, 143, 0.6);
+}
+
+/* ABOUT ME SECTION */
+.about-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.about-image {
+    position: sticky;
+    top: 100px;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 8px;
+    border: 2px solid #2a5a8f;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+.about-content h1 {
+    font-size: 2.5rem;
+    color: #fffef0;
+    margin-bottom: 2rem;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: #c8c8c8;
+    margin-bottom: 1.5rem;
+}
+
+/* STANDARD BUTTONS */
 .btn-primary {
-    background-color: #2a5a8f; /* EDIT: Blue button */
+    background-color: #2a5a8f;
     color: #fffef0;
     padding: 1rem 3rem;
     font-size: 1.2rem;
     border: none;
-    border-radius: 8px;
+    border-radius: 4px; /* Less rounded */
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(42, 90, 143, 0.4);
@@ -195,25 +248,7 @@ body {
     box-shadow: 0 6px 20px rgba(42, 90, 143, 0.6);
 }
 
-.btn-secondary {
-    background-color: #4a9d5f; /* EDIT: Dark green button */
-    color: #fffef0;
-    padding: 1rem 3rem;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(74, 157, 95, 0.4);
-}
-
-.btn-secondary:hover {
-    background-color: #3a7d4f;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(74, 157, 95, 0.6);
-}
-
-/* PROJECTS LANDING PAGE - Shows category buttons */
+/* PROJECTS CONTAINER */
 .projects-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -227,7 +262,7 @@ body {
     margin-bottom: 3rem;
 }
 
-/* CATEGORY GRID - 3 large category cards */
+/* CATEGORY GRID - Square cards with text overlay */
 .category-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -236,12 +271,14 @@ body {
 }
 
 .category-card {
-    background-color: #0d1520;
-    border-radius: 12px;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; /* Makes it square */
     overflow: hidden;
     cursor: pointer;
     transition: all 0.3s ease;
     border: 2px solid #2a5a8f;
+    border-radius: 4px; /* Less rounded */
 }
 
 .category-card:hover {
@@ -251,26 +288,40 @@ body {
 }
 
 .category-card img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 300px;
+    height: 100%;
     object-fit: cover;
 }
 
-.category-card h2 {
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+.category-card:hover .card-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card-overlay h2 {
     font-size: 2rem;
-    padding: 1.5rem;
-    color: #fffef0;
+    color: #ffffff;
     text-align: center;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+    z-index: 2;
 }
 
-.category-card p {
-    text-align: center;
-    color: #4a9d5f;
-    padding-bottom: 1.5rem;
-    font-size: 1.1rem;
-}
-
-/* PROJECT GRID - Individual project buttons within categories */
+/* PROJECT GRID - Square cards with text overlay */
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -279,12 +330,14 @@ body {
 }
 
 .project-card {
-    background-color: #0d1520;
-    border-radius: 10px;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; /* Makes it square */
     overflow: hidden;
     cursor: pointer;
     transition: all 0.3s ease;
     border: 2px solid #2a5a8f;
+    border-radius: 4px; /* Less rounded */
 }
 
 .project-card:hover {
@@ -294,19 +347,41 @@ body {
 }
 
 .project-card img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 250px;
+    height: 100%;
     object-fit: cover;
 }
 
-.project-card h3 {
-    font-size: 1.5rem;
-    padding: 1.5rem;
-    color: #fffef0;
-    text-align: center;
+.project-card .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
 }
 
-/* PROJECT DETAIL PAGE - Images left, text right */
+.project-card:hover .card-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card-overlay h3 {
+    font-size: 1.5rem;
+    color: #ffffff;
+    text-align: center;
+    padding: 1rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+    z-index: 2;
+}
+
+/* PROJECT DETAIL PAGE */
 .project-detail-container {
     max-width: 1400px;
     margin: 0 auto;
@@ -319,7 +394,7 @@ body {
 
 .project-images {
     position: sticky;
-    top: 100px; /* Stays visible while scrolling text */
+    top: 100px;
 }
 
 #project-images-container {
@@ -330,7 +405,7 @@ body {
 
 #project-images-container img {
     width: 100%;
-    border-radius: 8px;
+    border-radius: 4px;
     border: 2px solid #2a5a8f;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
 }
@@ -352,7 +427,7 @@ body {
     margin-bottom: 1.5rem;
 }
 
-/* PROJECT NAVIGATION - Previous/Next buttons */
+/* PROJECT NAVIGATION */
 .project-nav {
     display: flex;
     gap: 1.5rem;
@@ -367,7 +442,7 @@ body {
     padding: 0.8rem 2rem;
     font-size: 1rem;
     border: none;
-    border-radius: 6px;
+    border-radius: 4px; /* Less rounded */
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -399,7 +474,7 @@ body {
     width: 100%;
     height: 800px;
     border: 2px solid #2a5a8f;
-    border-radius: 8px;
+    border-radius: 4px;
     margin-bottom: 2rem;
     background-color: white;
 }
@@ -410,7 +485,7 @@ body {
     margin-top: 1rem;
 }
 
-/* FOOTER - Contact links */
+/* FOOTER - Contact info */
 .footer {
     background-color: #0d1520;
     padding: 2rem;
@@ -418,35 +493,57 @@ body {
     border-top: 2px solid #2a5a8f;
 }
 
-.contact-links {
+.contact-info {
     display: flex;
     justify-content: center;
-    gap: 3rem;
+    align-items: center;
+    gap: 2rem;
     margin-bottom: 1.5rem;
+    flex-wrap: wrap;
 }
 
-.contact-link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.email-text {
     color: #e8e8e8;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.email-text:hover {
+    text-decoration: underline;
+    color: #2a5a8f;
+}
+
+.phone-text {
+    color: #e8e8e8;
+    font-size: 1rem;
+}
+
+.linkedin-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
-.contact-link:hover {
-    color: #fffef0;
-    transform: translateY(-3px);
+.linkedin-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: #2a5a8f;
+    color: #ffffff;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
 }
 
-.contact-link .icon {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    color: #2a5a8f;
-}
-
-.contact-link:hover .icon {
-    color: #4a9d5f;
+.linkedin-link:hover .linkedin-icon {
+    background-color: #1f4570;
+    transform: translateY(-2px);
 }
 
 .copyright {
@@ -454,14 +551,22 @@ body {
     font-size: 0.9rem;
 }
 
-/* EDIT COLORS HERE - Quick reference guide */
-/*
-Primary Background: #1a2332 (dark blue-gray)
-Nav/Card Background: #0d1520 (darker blue-gray)
-Primary Blue: #2a5a8f
-Dark Green: #4a9d5f
-Light Yellow: #fffef0
-White Text: #e8e8e8
-Light Gray Text: #c8c8c8
-Black: #000000
-*/
+/* COPY NOTIFICATION */
+.copy-notification {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4a9d5f;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 2000;
+}
+
+.copy-notification.show {
+    opacity: 1;
+}
