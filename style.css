@@ -12,16 +12,14 @@ body {
     line-height: 1.6;
 }
 
-/* NAVIGATION BUTTONS - Only visible on non-home pages */
+/* NAVIGATION BUTTONS - Floating text, no background bar */
 .navbar {
-    display: none; /* Hidden by default, shown by JavaScript */
+    display: none; /* Hidden by default, shown by JavaScript on non-home pages */
     position: fixed;
-    top: 0;
+    top: 20px;
     width: 100%;
-    background-color: rgba(13, 21, 32, 0.95);
-    padding: 1rem 2rem;
     z-index: 1000;
-    border-bottom: 1px solid #2a5a8f;
+    pointer-events: none; /* Allow clicks to pass through empty space */
 }
 
 .nav-content {
@@ -31,6 +29,7 @@ body {
     gap: 2rem;
     align-items: center;
     justify-content: center;
+    pointer-events: auto; /* Re-enable clicks on actual content */
 }
 
 .nav-link {
@@ -42,13 +41,14 @@ body {
     cursor: pointer;
     font-size: 1rem;
     transition: color 0.3s ease;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .nav-link:hover {
     color: #2a5a8f;
 }
 
-/* DROPDOWN MENU - Stays open while hovering */
+/* DROPDOWN MENU */
 .dropdown {
     position: relative;
 }
@@ -61,6 +61,7 @@ body {
     cursor: pointer;
     padding: 0.5rem 1rem;
     transition: color 0.3s ease;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .dropdown-btn:hover {
@@ -70,7 +71,7 @@ body {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #0d1520;
+    background-color: rgba(13, 21, 32, 0.95);
     min-width: 180px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
     border-radius: 4px;
@@ -98,16 +99,27 @@ body {
     color: #fffef0;
 }
 
-/* SECTION VISIBILITY */
+/* SECTION VISIBILITY - Only one section visible at a time */
 .section {
     display: none;
     min-height: 100vh;
-    padding-top: 80px;
-    padding-bottom: 100px;
+    width: 100%;
 }
 
 .section.active {
     display: block;
+}
+
+/* Specific padding for sections that need nav space */
+#about,
+#projects-landing,
+#energy-landing,
+#woodworking-landing,
+#rd-landing,
+#project-detail,
+#resume {
+    padding-top: 80px;
+    padding-bottom: 100px;
 }
 
 /* HOME SECTION - Full background image */
@@ -118,8 +130,12 @@ body {
     background-attachment: fixed;
     position: relative;
     padding-top: 0;
-    display: flex;
+    display: none;
     align-items: flex-end;
+}
+
+#home.active {
+    display: flex;
 }
 
 #home::before {
@@ -156,14 +172,14 @@ body {
 
 .home-text h2 {
     font-size: 1.8rem;
-    color: #ffffff; /* White for university */
+    color: #ffffff;
     margin-bottom: 0.5rem;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 .home-text h3 {
     font-size: 1.3rem;
-    color: #ffffff; /* White for degrees */
+    color: #ffffff;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
 }
 
@@ -181,7 +197,7 @@ body {
     padding: 1rem 2.5rem;
     font-size: 1.2rem;
     border: none;
-    border-radius: 4px; /* Less rounded */
+    border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(42, 90, 143, 0.4);
@@ -236,7 +252,7 @@ body {
     padding: 1rem 3rem;
     font-size: 1.2rem;
     border: none;
-    border-radius: 4px; /* Less rounded */
+    border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(42, 90, 143, 0.4);
@@ -273,12 +289,12 @@ body {
 .category-card {
     position: relative;
     width: 100%;
-    padding-bottom: 100%; /* Makes it square */
+    padding-bottom: 100%;
     overflow: hidden;
     cursor: pointer;
     transition: all 0.3s ease;
     border: 2px solid #2a5a8f;
-    border-radius: 4px; /* Less rounded */
+    border-radius: 4px;
 }
 
 .category-card:hover {
@@ -332,12 +348,12 @@ body {
 .project-card {
     position: relative;
     width: 100%;
-    padding-bottom: 100%; /* Makes it square */
+    padding-bottom: 100%;
     overflow: hidden;
     cursor: pointer;
     transition: all 0.3s ease;
     border: 2px solid #2a5a8f;
-    border-radius: 4px; /* Less rounded */
+    border-radius: 4px;
 }
 
 .project-card:hover {
@@ -442,7 +458,7 @@ body {
     padding: 0.8rem 2rem;
     font-size: 1rem;
     border: none;
-    border-radius: 4px; /* Less rounded */
+    border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
