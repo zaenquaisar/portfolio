@@ -1,6 +1,4 @@
 // PROJECT DATA - EDIT THIS SECTION with your actual project information
-// Each project needs: title, images array (2-5 images), and description paragraphs
-
 const projectData = {
     energy: [
         {
@@ -152,9 +150,19 @@ const projectData = {
     ]
 };
 
-// TRACKING VARIABLES - Keep track of current state
+// TRACKING VARIABLES
 let currentCategory = '';
 let currentProjectIndex = 0;
+
+// FUNCTION: Show/hide navigation based on current section
+function updateNavVisibility(sectionId) {
+    const nav = document.getElementById('main-nav');
+    if (sectionId === 'home') {
+        nav.style.display = 'none';
+    } else {
+        nav.style.display = 'block';
+    }
+}
 
 // FUNCTION: Show a specific section and hide all others
 function showSection(sectionId) {
@@ -170,7 +178,10 @@ function showSection(sectionId) {
         targetSection.classList.add('active');
     }
     
-    // Scroll to top when switching sections
+    // Update navigation visibility
+    updateNavVisibility(sectionId);
+    
+    // Scroll to top
     window.scrollTo(0, 0);
 }
 
@@ -229,14 +240,34 @@ function nextProject() {
     showProject(currentCategory, currentProjectIndex);
 }
 
-// INITIALIZATION: Show home section when page loads
+// FUNCTION: Copy email to clipboard with visual feedback
+function copyEmail() {
+    const email = "quaisar.z@northeastern.edu"; // EDIT: Your actual email
+    
+    // Copy to clipboard
+    navigator.clipboard.writeText(email).then(function() {
+        // Show notification
+        const notification = document.getElementById('copy-notification');
+        notification.classList.add('show');
+        
+        // Hide after 2 seconds
+        setTimeout(function() {
+            notification.classList.remove('show');
+        }, 2000);
+    }).catch(function(err) {
+        console.error('Failed to copy email: ', err);
+    });
+}
+
+// INITIALIZATION: Set up page when it loads
 document.addEventListener('DOMContentLoaded', function() {
     showSection('home');
+    updateNavVisibility('home');
 });
 
 // INSTRUCTIONS FOR EDITING:
 // 1. Edit projectData object above with your actual project information
 // 2. Replace image paths with your actual image filenames
 // 3. Replace placeholder text with your real project descriptions
-// 4. Add as many <p> paragraphs as you need for each project
+// 4. Update the email in copyEmail() function with your actual email
 // 5. Make sure image filenames match exactly what you upload to images/ folder
