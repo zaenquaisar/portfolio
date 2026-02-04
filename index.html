@@ -1,1 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title> <!-- EDIT: Change to your actual name -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- NAVIGATION BAR - Appears on every page -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <!-- Home button -->
+            <a href="#" onclick="showSection('home')" class="nav-link">Home</a>
+            
+            <!-- Projects dropdown -->
+            <div class="dropdown">
+                <button class="nav-link dropdown-btn">Projects ▼</button>
+                <div class="dropdown-content">
+                    <!-- EDIT: These navigate to each project category -->
+                    <a href="#" onclick="showSection('projects-landing')">All Projects</a>
+                    <a href="#" onclick="showSection('energy-landing')">Energy</a>
+                    <a href="#" onclick="showSection('woodworking-landing')">Woodworking</a>
+                    <a href="#" onclick="showSection('rd-landing')">R&D</a>
+                </div>
+            </div>
+            
+            <a href="#" onclick="showSection('resume')" class="nav-link">Resume</a>
+            <a href="#contact-footer" class="nav-link">Contact</a>
+        </div>
+    </nav>
 
+    <!-- HOME SECTION -->
+    <section id="home" class="section active">
+        <div class="home-container">
+            <!-- EDIT: Replace with your actual image path -->
+            <img src="images/your-photo.jpg" alt="Your Name" class="hero-image">
+            
+            <div class="home-text">
+                <h1>Your Full Name</h1> <!-- EDIT: Your name -->
+                <h2>Northeastern University</h2> <!-- EDIT: Your school -->
+                <h3>B.S. Mechanical Engineering | M.S. Energy Systems</h3> <!-- EDIT: Your degrees -->
+                
+                <!-- EDIT: Write your intro paragraph here -->
+                <p class="intro">
+                    Senior Mechanical Engineering student passionate about renewable energy systems 
+                    and sustainable design. Expected graduation Fall 2026.
+                </p>
+            </div>
+            
+            <!-- Main action buttons -->
+            <div class="home-buttons">
+                <button onclick="showSection('projects-landing')" class="btn-primary">Projects</button>
+                <button onclick="showSection('resume')" class="btn-secondary">Resume</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS LANDING - Shows 3 category buttons -->
+    <section id="projects-landing" class="section">
+        <div class="projects-container">
+            <h1>My Projects</h1>
+            
+            <div class="category-grid">
+                <!-- Energy Category -->
+                <div class="category-card" onclick="showSection('energy-landing')">
+                    <!-- EDIT: Add your energy category image -->
+                    <img src="images/energy-category.jpg" alt="Energy Projects">
+                    <h2>Energy</h2>
+                    <p>4 Projects</p>
+                </div>
+                
+                <!-- Woodworking Category -->
+                <div class="category-card" onclick="showSection('woodworking-landing')">
+                    <!-- EDIT: Add your woodworking category image -->
+                    <img src="images/woodworking-category.jpg" alt="Woodworking Projects">
+                    <h2>Woodworking</h2>
+                    <p>7 Projects</p>
+                </div>
+                
+                <!-- R&D Category -->
+                <div class="category-card" onclick="showSection('rd-landing')">
+                    <!-- EDIT: Add your R&D category image -->
+                    <img src="images/rd-category.jpg" alt="R&D Projects">
+                    <h2>R&D</h2>
+                    <p>1 Project</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENERGY CATEGORY LANDING - Shows 4 energy project buttons -->
+    <section id="energy-landing" class="section">
+        <div class="projects-container">
+            <h1>Energy Projects</h1>
+            
+            <div class="project-grid">
+                <!-- EDIT: Add your 4 energy projects here -->
+                <div class="project-card" onclick="showProject('energy', 0)">
+                    <img src="images/energy-project1.jpg" alt="Project 1">
+                    <h3>Solar Tracker System</h3> <!-- EDIT: Project name -->
+                </div>
+                
+                <div class="project-card" onclick="showProject('energy', 1)">
+                    <img src="images/energy-project2.jpg" alt="Project 2">
+                    <h3>Pyrolysis Reactor</h3> <!-- EDIT: Project name -->
+                </div>
+                
+                <div class="project-card" onclick="showProject('energy', 2)">
+                    <img src="images/energy-project3.jpg" alt="Project 3">
+                    <h3>Energy Storage Analysis</h3> <!-- EDIT: Project name -->
+                </div>
+                
+                <div class="project-card" onclick="showProject('energy', 3)">
+                    <img src="images/energy-project4.jpg" alt="Project 4">
+                    <h3>Project Name 4</h3> <!-- EDIT: Project name -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WOODWORKING CATEGORY LANDING - Shows 7 woodworking project buttons -->
+    <section id="woodworking-landing" class="section">
+        <div class="projects-container">
+            <h1>Woodworking Projects</h1>
+            
+            <div class="project-grid">
+                <!-- EDIT: Add your 7 woodworking projects -->
+                <div class="project-card" onclick="showProject('woodworking', 0)">
+                    <img src="images/wood-project1.jpg" alt="Project 1">
+                    <h3>Project Name 1</h3>
+                </div>
+                
+                <div class="project-card" onclick="showProject('woodworking', 1)">
+                    <img src="images/wood-project2.jpg" alt="Project 2">
+                    <h3>Project Name 2</h3>
+                </div>
+                
+                <div class="project-card" onclick="showProject('woodworking', 2)">
+                    <img src="images/wood-project3.jpg" alt="Project 3">
+                    <h3>Project Name 3</h3>
+                </div>
+                
+                <div class="project-card" onclick="showProject('woodworking', 3)">
+                    <img src="images/wood-project4.jpg" alt="Project 4">
+                    <h3>Project Name 4</h3>
+                </div>
+                
+                <div class="project-card" onclick="showProject('woodworking', 4)">
+                    <img src="images/wood-project5.jpg" alt="Project 5">
+                    <h3>Project Name 5</h3>
+                </div>
+                
+                <div class="project-card" onclick="showProject('woodworking', 5)">
+                    <img src="images/wood-project6.jpg" alt="Project 6">
+                    <h3>Project Name 6</h3>
+                </div>
+                
+                <div class="project-card" onclick="showProject('woodworking', 6)">
+                    <img src="images/wood-project7.jpg" alt="Project 7">
+                    <h3>Project Name 7</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- R&D CATEGORY LANDING - Shows 1 R&D project button -->
+    <section id="rd-landing" class="section">
+        <div class="projects-container">
+            <h1>R&D Projects</h1>
+            
+            <div class="project-grid">
+                <!-- EDIT: Add your R&D project -->
+                <div class="project-card" onclick="showProject('rd', 0)">
+                    <img src="images/rd-project1.jpg" alt="Project 1">
+                    <h3>Project Name</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INDIVIDUAL PROJECT PAGE TEMPLATE -->
+    <!-- This section shows when clicking on a specific project -->
+    <section id="project-detail" class="section">
+        <div class="project-detail-container">
+            <div class="project-images">
+                <!-- Images stack vertically here - populated by JavaScript -->
+                <div id="project-images-container"></div>
+            </div>
+            
+            <div class="project-content">
+                <!-- Project title and description - populated by JavaScript -->
+                <h1 id="project-title"></h1>
+                <div id="project-description"></div>
+                
+                <!-- Navigation between projects in same category -->
+                <div class="project-nav">
+                    <button onclick="previousProject()" class="btn-nav">← Previous Project</button>
+                    <button onclick="nextProject()" class="btn-nav">Next Project →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESUME SECTION - PDF viewer -->
+    <section id="resume" class="section">
+        <div class="resume-container">
+            <h1>Resume</h1>
+            <!-- EDIT: Replace 'your-resume.pdf' with your actual resume filename -->
+            <iframe src="resume.pdf" class="pdf-viewer"></iframe>
+            <!-- Download button -->
+            <a href="resume.pdf" download class="btn-primary download-btn">Download Resume</a>
+        </div>
+    </section>
+
+    <!-- FOOTER - Appears on every page -->
+    <footer id="contact-footer" class="footer">
+        <!-- EDIT: Replace with your actual contact information -->
+        <div class="contact-links">
+            <a href="mailto:your.email@example.com" class="contact-link">
+                <span class="icon">✉</span>
+                <span>Email</span>
+            </a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" class="contact-link">
+                <span class="icon">in</span>
+                <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/yourusername" target="_blank" class="contact-link">
+                <span class="icon">⚡</span>
+                <span>GitHub</span>
+            </a>
+        </div>
+        <p class="copyright">© 2026 Your Name. All rights reserved.</p>
+    </footer>
+
+    <!-- Link to JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
