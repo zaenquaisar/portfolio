@@ -27,17 +27,17 @@ const projectData = {
             `
         },
         {
-            title: "Energy Storage Analysis",
+            title: "Recycled Wind Turbine",
             images: [
-                "images/energy-project3-photo1.jpg",
-                "images/energy-project3-photo2.jpg",
-                "images/energy-project3-photo3.jpg",
-                "images/energy-project3-photo4.jpg"
+                "images/WindTurbine1.jpg",
+                "images/WindTurbine2.jpg",
+                "images/WindTurbine3.jpg",
+                "images/WindTurbine4.jpg"
             ],
             description: `
-                <p>Description of your energy storage analysis project.</p>
-                <p>Technical approach and tools used.</p>
-                <p>Findings and impact.</p>
+                <p>    As an independent side project, I designed and built a wind turbine primarily from recycled PVC pipe, reclaimed wood, and 3D printed parts to study the technology as well as learn how to build under resource constraints. I enjoy finding new uses for old things, so I challenged myself to design the wind turbine structure based on random materials available on the Northeastern Makerspace recycle shelf and attempt to charge a phone.</p>
+                <p>    Working with a $40 budget over two months, I gathered materials from the makerspace and designed parts in OnShape that securely joined the wood platforms and PVC pipe and provided structure for the inner workings of the turbine. The turbine runs off a 6V DC motor with rotation generated through blades made from PVC pipe. The curvature of the pipe catches the flowing air and transfers it into rotational motion. The primary challenge was achieving precision with my chosen materials. Given the tools available in the makerspace, I had to cut the blades out on a bandsaw, and I quickly realized it was impossible to keep the blade perpendicular to the tangent line of the circle at the point I was cutting, as it was constantly rotating. After some experimenting, I developed a solution where I used a template to cut a small offset on the PVC pipe which could be sanded down later. </p>
+                <p>    During testing, the turbine successfully generated 5V but it wasn’t able to generate sufficient current to sustainably charge my phone. If I wanted to be able to continuously charge a phone I would need much larger blades and therefore a much larger structure, as well as a battery system to store power when there is no wind. While the wind turbine didn’t function in the way I intended, I learned a lot about designing around the resources I had available and how wind turbines are a promising source of renewable energy. </p>
             `
         },
         {
@@ -55,16 +55,16 @@ const projectData = {
     
     woodworking: [
         {
-            title: "Woodworking Project 1",
+            title: "Wooden Pergola",
             images: [
-                "images/wood-project1-photo1.jpg",
-                "images/wood-project1-photo2.jpg",
-                "images/wood-project1-photo3.jpg"
+                "images/Pergola1.jpg",
+                "images/Pergola2.jpg",
+                "images/Pergola3.jpg",
             ],
             description: `
-                <p>Description of your first woodworking project.</p>
-                <p>Design process and construction details.</p>
-                <p>Final results and what you learned.</p>
+                <p>My biggest woodworking project to date. I designed and built a 13ft x 9ft x 8ft wooden pergola in my backyard to challenge my woodworking and engineering skills while revitalizing an unused outdoor space. The inspiration for this project came from my trip to Greece, where I saw an endless amount of these beautiful structures that provided a calming aesthetic to the space beneath it. I knew the perfect place for one would be in place of the dead patch of pachysandra in my parents’ backyard. The project required not only woodworking but landscaping and concrete work too, the latter of which I hadn’t done before. This project allowed me to apply engineering principles to the unpredictable natural environment where precision is difficult but necessary.</p>
+                <p>Over one month, I designed the structure by adapting inspiration from existing pergolas and executed the full build within a $1,000 budget. Construction began with digging four 4-foot deep post holes, lining them with aggregate and bigger rocks for water drainage, and pouring concrete foundations with embedded anchor bolts to attach to the wooden posts. The primary challenge was working with ground that was filled with small rocks that made post hole digging very difficult and laborious. The rocks would absorb all the energy of the downward push stopping the shovel from fully penetrating the dirt. Rather than get discouraged, I realized as I was digging I could use a wagon I had with a mesh bottom to sift out the dirt from the mixture, leaving me with the small rocks I used as aggregate for the concrete. The second major challenge was achieving structural precision without expensive professional grade tools. To make sure the foundations and posts were level and equal with each other, I used a long plank, small pieces of wood, and a bubble level to measure the height offsets at each post to ensure the frame would be equal despite uneven anchor bolt placement. </p>
+                <p>The completed pergola successfully transformed an unused backyard space into a functional outdoor structure. Later in the fall, the stone patio was extended to the pergola. Staying under $1,000 while dealing with the unpredictable outdoor environment gave me a challenge in managing material and tool costs, designing structural systems, and thinking outside of the box to achieve my goals. This project taught me how engineering in the natural world differs from the controlled environments often seen in the mechanical engineering world, requiring adaptability and persistence when things go awry, which they often do.</p>
             `
         },
         {
