@@ -75,9 +75,12 @@ body {
     min-width: 180px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
     border-radius: 4px;
+    top: 100%;  /* ADD THIS - positions at bottom of button */
+    margin-top: -5px;  /* ADD THIS - overlap button slightly */
     overflow: hidden;
     left: 50%;
     transform: translateX(-50%);
+    padding-top: 5px;  /* ADD THIS - offset the negative margin visually */
 }
 
 .dropdown:hover .dropdown-content,
