@@ -51,6 +51,7 @@ body {
 /* DROPDOWN MENU */
 .dropdown {
     position: relative;
+    pointer-events: auto;  
 }
 
 .dropdown-btn {
