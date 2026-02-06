@@ -9,9 +9,7 @@ const projectData = {
                 "images/energy-project1-photo3.jpg"
             ],
             description: `
-                <p>First paragraph describing your solar tracker project. Explain the problem you were solving and your approach.</p>
-                <p>Second paragraph with technical details - components used, design decisions, challenges faced.</p>
-                <p>Third paragraph about results, what you learned, and future improvements.</p>
+                <p>Text</p>
             `
         },
         {
@@ -21,9 +19,8 @@ const projectData = {
                 "images/energy-project2-photo2.jpg"
             ],
             description: `
-                <p>Description of your pyrolysis reactor project.</p>
-                <p>Technical details and methodology.</p>
-                <p>Results and conclusions.</p>
+                <p>Text</p>
+               
             `
         },
         {
@@ -47,8 +44,7 @@ const projectData = {
                 "images/energy-project4-photo2.jpg"
             ],
             description: `
-                <p>Replace this with your fourth energy project description.</p>
-                <p>Add as many paragraphs as needed.</p>
+                <p>Text<p>
             `
         }
     ],
@@ -74,8 +70,8 @@ const projectData = {
                 "images/wood-project2-photo2.jpg"
             ],
             description: `
-                <p>Description of your second woodworking project.</p>
-                <p>Technical details and challenges.</p>
+                <p>Text</p>
+               
             `
         },
         {
@@ -86,7 +82,7 @@ const projectData = {
                 "images/wood-project3-photo3.jpg"
             ],
             description: `
-                <p>Description of your third woodworking project.</p>
+                <p>text</p>
             `
         },
         {
@@ -96,7 +92,7 @@ const projectData = {
                 "images/wood-project4-photo2.jpg"
             ],
             description: `
-                <p>Description of your fourth woodworking project.</p>
+                <p>text</p>
             `
         },
         {
@@ -106,7 +102,7 @@ const projectData = {
                 "images/wood-project5-photo2.jpg"
             ],
             description: `
-                <p>Description of your fifth woodworking project.</p>
+                <p>text</p>
             `
         },
         {
@@ -116,7 +112,7 @@ const projectData = {
                 "images/wood-project6-photo2.jpg"
             ],
             description: `
-                <p>Description of your sixth woodworking project.</p>
+                <p>text</p>
             `
         },
         {
@@ -126,7 +122,7 @@ const projectData = {
                 "images/wood-project7-photo2.jpg"
             ],
             description: `
-                <p>Description of your seventh woodworking project.</p>
+                <p>text</p>
             `
         }
     ],
@@ -142,9 +138,8 @@ const projectData = {
                 "images/rd-project1-photo5.jpg"
             ],
             description: `
-                <p>Description of your R&D project.</p>
-                <p>Research methodology and experimental setup.</p>
-                <p>Results and future work.</p>
+                <p></p>
+                
             `
         }
     ]
