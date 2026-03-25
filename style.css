@@ -477,10 +477,13 @@ body {
 
 /* RESUME SECTION */
 .resume-container {
-    max-width: 1000px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 2rem;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers everything horizontally */
 }
 
 .resume-container h1 {
@@ -489,19 +492,19 @@ body {
     margin-bottom: 2rem;
 }
 
-.pdf-viewer {
+.resume-image {
     width: 100%;
-    height: 800px;
+    max-width: 1200px;
     border: 2px solid #2a5a8f;
     border-radius: 4px;
     margin-bottom: 2rem;
-    background-color: white;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    display: block;
 }
 
 .download-btn {
     display: inline-block;
     text-decoration: none;
-    margin-top: 1rem;
 }
 
 /* FOOTER - Contact info */
