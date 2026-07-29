@@ -200,15 +200,22 @@ function showProject(category, index) {
     // Update project description
     document.getElementById('project-description').innerHTML = project.description;
     
-    // Clear and populate images
-    const imagesContainer = document.getElementById('project-images-container');
-    imagesContainer.innerHTML = '';
+    // Clear and populate images (alternating between two stacks)
+    const leftStack = document.getElementById('image-stack-left');
+    const rightStack = document.getElementById('image-stack-right');
+    leftStack.innerHTML = '';
+    rightStack.innerHTML = '';
     
-    project.images.forEach(imagePath => {
+    project.images.forEach((imagePath, i) => {
         const img = document.createElement('img');
         img.src = imagePath;
         img.alt = project.title;
-        imagesContainer.appendChild(img);
+        
+        if (i % 2 === 0) {
+            leftStack.appendChild(img);
+        } else {
+            rightStack.appendChild(img);
+        }
     });
     
     // Show the project detail section
