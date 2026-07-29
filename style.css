@@ -134,7 +134,7 @@ body {
     position: relative;
     padding-top: 0;
     display: none;
-    align-items: flex-end;
+    align-items: center;
 }
 
 #home.active {
@@ -402,7 +402,7 @@ body {
 
 /* PROJECT DETAIL PAGE */
 .project-detail-container {
-    max-width: 1400px;
+    max-width: 1820px;
     margin: 0 auto;
     padding: 2rem;
     display: grid;
