@@ -6,8 +6,8 @@ const projectData = {
             images: [
                 "images/SESCover2.JPG",
                 "images/SESBare.JPG",
-                "images/SESCAD3.JPG", 
-                "images/SESCAD4.JPG",
+                "images/SESCAD3.jpg", 
+                "images/SESCAD4.jpg",
                 "images/SESSchematic.jpg",
                 "images/SESCover.JPG"
             ],
@@ -63,10 +63,10 @@ For the condenser, I designed a passive system requiring no power, using gravity
         {
             title: "Sugarcane Bagasse Filtering System",
             images: [
-                "images/biomassdrawing.JPG",
-                "images/biomasscost.JPG",
-                "images/biomassstone.JPG",
-                "images/biomassstonecost.JPG"
+                "images/biomassdrawing.jpg",
+                "images/biomasscost.jpg",
+                "images/biomassstone.jpg",
+                "images/biomassstonecost.jpg"
             ],
             description: `
                 <h3> What </h3>
