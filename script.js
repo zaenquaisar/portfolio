@@ -211,23 +211,46 @@ function showProject(category, index) {
     // Update project description
     document.getElementById('project-description').innerHTML = project.description;
     
-    // Clear and populate images (alternating between two stacks)
+// Clear and populate images
     const leftStack = document.getElementById('image-stack-left');
     const rightStack = document.getElementById('image-stack-right');
+    const imagesContainer = document.getElementById('project-images-container');
+    const existingSingleImg = imagesContainer.querySelector('.single-image');
+    if (existingSingleImg) existingSingleImg.remove();
     leftStack.innerHTML = '';
     rightStack.innerHTML = '';
     
-    project.images.forEach((imagePath, i) => {
+    if (project.images.length === 1) {
+        // Single image: bigger, centered, not split into stacks
+        imagesContainer.classList.add('single-image-mode');
+        leftStack.style.display = 'none';
+        rightStack.style.display = 'none';
+        
         const img = document.createElement('img');
-        img.src = imagePath;
+        img.src = project.images[0];
         img.alt = project.title;
-        img.onclick = () => openLightbox(imagePath);
-        if (i % 2 === 0) {
-            leftStack.appendChild(img);
-        } else {
-            rightStack.appendChild(img);
-        }
-    });
+        img.className = 'single-image';
+        img.onclick = () => openLightbox(project.images[0]);
+        imagesContainer.appendChild(img);
+    } else {
+        // Multiple images: alternate between two stacks as before
+        imagesContainer.classList.remove('single-image-mode');
+        leftStack.style.display = 'flex';
+        rightStack.style.display = 'flex';
+        
+        project.images.forEach((imagePath, i) => {
+            const img = document.createElement('img');
+            img.src = imagePath;
+            img.alt = project.title;
+            img.onclick = () => openLightbox(imagePath);
+            
+            if (i % 2 === 0) {
+                leftStack.appendChild(img);
+            } else {
+                rightStack.appendChild(img);
+            }
+        });
+    }
     
     // Show the project detail section
     showSection('project-detail');
