@@ -221,7 +221,7 @@ function showProject(category, index) {
         const img = document.createElement('img');
         img.src = imagePath;
         img.alt = project.title;
-        
+        img.onclick = () => openLightbox(imagePath);
         if (i % 2 === 0) {
             leftStack.appendChild(img);
         } else {
@@ -259,6 +259,19 @@ function nextProject() {
     showProject(currentCategory, currentProjectIndex);
 }
 
+// FUNCTION: Open lightbox with clicked image
+function openLightbox(imageSrc) {
+    const overlay = document.getElementById('lightbox-overlay');
+    const lightboxImg = document.getElementById('lightbox-img');
+    lightboxImg.src = imageSrc;
+    overlay.classList.add('active');
+}
+
+// FUNCTION: Close lightbox
+function closeLightbox() {
+    const overlay = document.getElementById('lightbox-overlay');
+    overlay.classList.remove('active');
+}
 // FUNCTION: Copy email to clipboard with visual feedback
 function copyEmail() {
     const email = "quaisar.z@northeastern.edu"; // EDIT: Your actual email
