@@ -21,6 +21,7 @@ The two biggest challenges were elevation control and hardware debugging. Gettin
                 <h3> Results </h3>
                 <p>The finished system is able to track the sun with accuracy within 2 degrees and delivers regulated power through USB-C at three different voltage levels, enabling it to charge a phone or a laptop through clean energy, something I wanted to do since the limitations I ran into with my wind turbine project. Beyond the finished build, this project deepened my understanding of embedded systems and the debugging side of engineering as well as the design side. Tracing hardware faults through a full stack of firmware, wiring and power electronics takes a lot of patience, and I ended the project being much more comfortable diagnosing issues instead of building around them. 
 </p>
+        `
         },
         {
             title: "Solar Pyrolysis Reactor",
@@ -109,7 +110,6 @@ For the condenser, I designed a passive system requiring no power, using gravity
                 <p>The finished desk took about a week to build and has held up well through multiple moves, thanks to the disassemble/reassemble design. Beyond the finished product, the project was a good exercise in working precisely with imperfect, reclaimed materials, and in designing for a real constraint (portability) from the start rather than as an afterthought.</p>
             `
                
-            `
         },
         {
             title: "No Screw Wooden Shelf",
@@ -123,7 +123,6 @@ For the condenser, I designed a passive system requiring no power, using gravity
                 <p>Working with about $200 in materials over two weeks, I designed and built the five-tier structure using wooden dowels for every joint, since this was my first time building with dowel joinery instead of screws. Without proper dowel drilling tools like a doweling jig, the hardest part was getting the dowel holes aligned precisely enough across each joint for the pieces to fit together cleanly, which I worked through with careful, methodical measuring and marking before drilling each hole. </p>
                 <h3> Results </h3>
                 <p>The finished shelf holds up well structurally, disassembles and reassembles as required for festival storage, and has performed reliably since delivery. This was my first paid contract project, and it pushed me to design around a client's fixed requirements rather than my own preferences, and to solve a new joinery technique without the specialized tools that normally make it straightforward.</p>
-            `
             `
         },
         {
