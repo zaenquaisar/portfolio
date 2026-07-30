@@ -630,3 +630,16 @@ body {
 .copy-notification.show {
     opacity: 1;
 }
+/* SINGLE IMAGE PROJECTS - Bigger, centered image instead of split stacks */
+#project-images-container.single-image-mode {
+    justify-content: center;
+}
+
+.single-image {
+    width: 100%;
+    max-width: 550px;
+    border-radius: 4px;
+    border: 2px solid #2a5a8f;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
