@@ -1,8 +1,24 @@
 // PROJECT DATA - EDIT THIS SECTION with your actual project information
+//
+// Each project has:
+//   title       - page heading
+//   summary     - one-line description shown under the title
+//   stats       - 2 to 3 headline numbers: { value: "...", label: "..." }
+//   skills      - skill/tool tags shown near the top
+//   images      - first image is the large hero, the rest go in the gallery
+//   description - What / How / Results write-up. Each <h3> becomes a
+//                 collapsible section; the first one (What) starts open.
 const projectData = {
     energy: [
         {
             title: "Dual-Axis Solar Tracker",
+            summary: "A portable, sun-tracking solar power station that charges phones and laptops over USB-C.",
+            stats: [
+                { value: "<4°", label: "Tracking error" },
+                { value: "3", label: "USB-C output voltages" },
+                { value: "$800", label: "Budget, solo build" }
+            ],
+            skills: ["ESP32", "Arduino/C++", "SolidWorks", "KiCad", "3D Printing", "Soldering", "80/20 Framing", "Power Electronics", "Battery Management (BMS)", "Motor Control", "I2C Debugging", "USB-C Power Delivery"],
             images: [
                 "images/SESCover2.JPG",
                 "images/SESBare.JPG",
@@ -14,17 +30,22 @@ const projectData = {
             description: `
                 <h3> What </h3>
                 <p>Inspired by my capstone project, I designed and built a dual-axis solar tracking system with integrated battery storage and power delivery. The idea was to build a portable solar energy system that could be placed anywhere and start tracking the sun to deliver maximum efficiency. Wherever there is adequate sunlight, you can drop the tracker, input your location and the current time, and now you have a small-scale clean energy source to charge phones, laptops, or power a solar pyrolysis reactor. I wanted to challenge myself by building this system from the ground up, covering everything from mechanical tracking structure to power electronics to the firmware tying everything together. </p>
-               <h3> How </h3>
-                <p>Working with a budget of about $800, I built the system around a DC motor with a quadrature encoder for azimuth and a microstepped stepper motor for elevation, both driven through worm gears and monitored via limit switches. Two 3-channel current sensors monitor current and voltage across the power system in real time. Power flows from the solar panel through a 4S LiPo battery and BMS, then out through regulators providing 5V, 9V, 12V, and 20V. 12V is dedicated to motor control, while the rest feed USB-C power delivery modules. The system runs on an ESP32 microcontroller with custom firmware across modular subsystems, including motor control, power management, sun-position calculation, and safety. I modeled the mechanical design in SolidWorks and the electronics schematic in KiCad.
-The two biggest challenges were elevation control and hardware debugging. Getting a motor/gear subsystem with a small footprint that could handle full panel torque at the lowest elevation angle took several iterations of motor and gear sizing, guided by SolidWorks modeling. On the hardware side, I hit repeated ESP32 crash loops from boot-strapping pin conflicts, and the power sensors weren't showing up on the I2C bus despite wiring and voltages checking out. I worked through both systematically, testing different I2C speeds, isolating sensors individually, and checking GPIO behavior at the bit level to separate hardware from software causes.
-</p>
+                <h3> How </h3>
+                <p>Working with a budget of about $800, I built the system around a DC motor with a quadrature encoder for azimuth and a microstepped stepper motor for elevation, both driven through worm gears and monitored via limit switches. Two 3-channel current sensors monitor current and voltage across the power system in real time. Power flows from the solar panel through a 4S LiPo battery and BMS, then out through regulators providing 5V, 9V, 12V, and 20V. 12V is dedicated to motor control, while the rest feed USB-C power delivery modules. The system runs on an ESP32 microcontroller with custom firmware across modular subsystems, including motor control, power management, sun-position calculation, and safety. I modeled the mechanical design in SolidWorks and the electronics schematic in KiCad.</p>
+                <p>The two biggest challenges were elevation control and hardware debugging. Getting a motor/gear subsystem with a small footprint that could handle full panel torque at the lowest elevation angle took several iterations of motor and gear sizing, guided by SolidWorks modeling. On the hardware side, I hit repeated ESP32 crash loops from boot-strapping pin conflicts, and the power sensors weren't showing up on the I2C bus despite wiring and voltages checking out. I worked through both systematically, testing different I2C speeds, isolating sensors individually, and checking GPIO behavior at the bit level to separate hardware from software causes.</p>
                 <h3> Results </h3>
-                <p>The finished system is able to track the sun with accuracy within 2 degrees and delivers regulated power through USB-C at three different voltage levels, enabling it to charge a phone or a laptop through clean energy, something I wanted to do since the limitations I ran into with my wind turbine project. Beyond the finished build, this project deepened my understanding of embedded systems and the debugging side of engineering as well as the design side. Tracing hardware faults through a full stack of firmware, wiring and power electronics takes a lot of patience, and I ended the project being much more comfortable diagnosing issues instead of building around them. 
-</p>
-        `
+                <p>The finished system is able to track the sun with accuracy within 2 degrees and delivers regulated power through USB-C at three different voltage levels, enabling it to charge a phone or a laptop through clean energy, something I wanted to do since the limitations I ran into with my wind turbine project. Beyond the finished build, this project deepened my understanding of embedded systems and the debugging side of engineering as well as the design side. Tracing hardware faults through a full stack of firmware, wiring and power electronics takes a lot of patience, and I ended the project being much more comfortable diagnosing issues instead of building around them. </p>
+            `
         },
         {
             title: "Solar Pyrolysis Reactor",
+            summary: "A solar-concentrating reactor that turns sargassum seaweed into bio-oil, bio-gas, and bio-char.",
+            stats: [
+                { value: "400°C", label: "Hot zone temperature" },
+                { value: "63%", label: "Bio-char yield" },
+                { value: "6 months", label: "Capstone, team of 4" }
+            ],
+            skills: ["Concentrated Solar", "Pyrolysis", "Heat Exchanger Design", "LMTD Analysis", "Sun Tracking", "BNO055 Orientation Sensor", "Motor Control", "Embedded Programming", "Reverse Engineering"],
             images: [
                 "images/CapstoneCover.jpg",
                 "images/CapstoneCAD1.jpg", 
@@ -35,16 +56,22 @@ The two biggest challenges were elevation control and hardware debugging. Gettin
                 <h3> What </h3>
                 <p>As part of a four-person, six-month capstone project, our team built a solar pyrolysis reactor that converts sargassum seaweed into bio-oil, bio-gas, and bio-char, using a parabolic dish to concentrate sunlight into a hot zone where an auger moves material through as it pyrolyzes. We inherited the dish, tracking frame, and system architecture from previous capstone teams. My independent contributions were designing the condenser system that collects the resulting bio-oil and bio-gas and rebuilding the sun-tracking system with a more reliable sensor approach and manual backup control. </p>
                 <h3> How </h3>
-                <p>Sargassum moves through an auger into a pipe at the dish's focal hot zone, reaching temperatures up to 400°C to drive pyrolysis, while nitrogen flushes oxygen from the system to prevent combustion. Azimuth and elevation tracking run on a DC motor and stepper motor mounted on the inherited 80/20 frame.
-I replaced the original light sensor based tracking, which was prone to hardware failures and easily fooled by clouds, with a BNO055 absolute orientation sensor, adding manual keyboard control as a backup. Since no schematic or code existed for the inherited hardware, I reverse engineered the wiring through visual inspection before writing new code around it. The BNO055 itself needed enough clearance from the metal frame to read accurately, which took some repositioning to solve.
-For the condenser, I designed a passive system requiring no power, using gravity and gas pressure to separate the outputs: liquid bio-oil falls into a collection jar while bio-gas rises through the tubing. I sized the copper tubing using an LMTD approach to hit a 100°C condensation target with a safety factor, using an ice bath to maintain the temperature drop.
- <p>
+                <p>Sargassum moves through an auger into a pipe at the dish's focal hot zone, reaching temperatures up to 400°C to drive pyrolysis, while nitrogen flushes oxygen from the system to prevent combustion. Azimuth and elevation tracking run on a DC motor and stepper motor mounted on the inherited 80/20 frame.</p>
+                <p>I replaced the original light sensor based tracking, which was prone to hardware failures and easily fooled by clouds, with a BNO055 absolute orientation sensor, adding manual keyboard control as a backup. Since no schematic or code existed for the inherited hardware, I reverse engineered the wiring through visual inspection before writing new code around it. The BNO055 itself needed enough clearance from the metal frame to read accurately, which took some repositioning to solve.</p>
+                <p>For the condenser, I designed a passive system requiring no power, using gravity and gas pressure to separate the outputs: liquid bio-oil falls into a collection jar while bio-gas rises through the tubing. I sized the copper tubing using an LMTD approach to hit a 100°C condensation target with a safety factor, using an ice bath to maintain the temperature drop.</p>
                 <h3> Results </h3>
-                <p>The reactor yielded 63% bio-char, 11.5% bio-oil and water, and 25.5% bio-gas and nitrogen, sustaining hot zone temperatures up to 400°C. The biggest challenge was working with inherited hardware with no documentation, especially the tracking system, which required reverse engineering a schematic from scratch. Testing through winter months added further difficulty, requiring added insulation and careful timing to reach pyrolysis temperature. The project pushed me to build reliable systems from undocumented hardware and work effectively through real ambiguity. <p>
+                <p>The reactor yielded 63% bio-char, 11.5% bio-oil and water, and 25.5% bio-gas and nitrogen, sustaining hot zone temperatures up to 400°C. The biggest challenge was working with inherited hardware with no documentation, especially the tracking system, which required reverse engineering a schematic from scratch. Testing through winter months added further difficulty, requiring added insulation and careful timing to reach pyrolysis temperature. The project pushed me to build reliable systems from undocumented hardware and work effectively through real ambiguity.</p>
             `
         },
         {
             title: "Recycled Wind Turbine",
+            summary: "A small wind turbine built almost entirely from recycled makerspace materials.",
+            stats: [
+                { value: "$40", label: "Total budget" },
+                { value: "5V", label: "Output reached in testing" },
+                { value: "2 months", label: "Solo build" }
+            ],
+            skills: ["Onshape", "3D Printing", "Wind Energy", "DC Generators", "Bandsaw Fabrication", "Recycled Materials", "Prototyping"],
             images: [
                 "images/WindTurbine1.jpg",
                 "images/WindTurbine2.jpg",
@@ -62,6 +89,13 @@ For the condenser, I designed a passive system requiring no power, using gravity
         },
         {
             title: "Sugarcane Bagasse Filtering System",
+            summary: "A cost-backed proposal to stop rocks in sugarcane fuel from shutting down a Brazilian power plant.",
+            stats: [
+                { value: "R$27k/hr", label: "Downtime cost identified" },
+                { value: "R$17.4k/hr", label: "Projected net gain per solution" },
+                { value: "1 month", label: "In Brazil, team of 3" }
+            ],
+            skills: ["Combustion Chemistry", "Energy Calculations", "Cost Analysis", "Industrial Process Design", "Site Assessment", "International Fieldwork"],
             images: [
                 "images/biomassdrawing.jpg",
                 "images/biomasscost.jpg",
@@ -70,11 +104,11 @@ For the condenser, I designed a passive system requiring no power, using gravity
             ],
             description: `
                 <h3> What </h3>
-                <p>As part of a three-person project during a one-month sustainable energy study abroad program in Brazil, our team analyzed a real problem at Com Bio, a plant burning sugarcane bagasse for steam energy: rocks mixed into the bagasse during transport were damaging feed machinery and causing costly downtime. My contributions were proposing an industrial blower based winnowing solution, and working on the combustion chemistry, energy calculations, and cost analysis behind our proposals.<p>
+                <p>As part of a three-person project during a one-month sustainable energy study abroad program in Brazil, our team analyzed a real problem at Com Bio, a plant burning sugarcane bagasse for steam energy: rocks mixed into the bagasse during transport were damaging feed machinery and causing costly downtime. My contributions were proposing an industrial blower based winnowing solution, and working on the combustion chemistry, energy calculations, and cost analysis behind our proposals.</p>
                 <h3> How </h3>
-                <p>After an onsite visit to see the plant's conveyor and boiler system firsthand, we worked with engineering directors to estimate cost and downtime figures, since detailed operational data wasn't readily available. I calculated the boiler's effective energy extraction using bagasse's heating value and estimated efficiency, and proposed a mechanized winnowing solution that uses directed airflow to separate lighter bagasse from heavier rocks as they fall off the conveyor, then ran the cost analysis comparing this against a mechanical destoner alternative.<p>
+                <p>After an onsite visit to see the plant's conveyor and boiler system firsthand, we worked with engineering directors to estimate cost and downtime figures, since detailed operational data wasn't readily available. I calculated the boiler's effective energy extraction using bagasse's heating value and estimated efficiency, and proposed a mechanized winnowing solution that uses directed airflow to separate lighter bagasse from heavier rocks as they fall off the conveyor, then ran the cost analysis comparing this against a mechanical destoner alternative.</p>
                 <h3> Result </h3>
-                <p>We found that rock related downtime costs Com Bio roughly R$27,000 (about $4,650) per hour in lost revenue, and that both the blower and destoner solutions were financially strong, each projected to net about R$17,395 in hourly profit after operating costs. Working with real plant constraints and limited data pushed me to build sound engineering estimates from incomplete information and tie technical solutions directly to financial impact.<p>
+                <p>We found that rock related downtime costs Com Bio roughly R$27,000 (about $4,650) per hour in lost revenue, and that both the blower and destoner solutions were financially strong, each projected to net about R$17,395 in hourly profit after operating costs. Working with real plant constraints and limited data pushed me to build sound engineering estimates from incomplete information and tie technical solutions directly to financial impact.</p>
             `
         }
     ],
@@ -82,6 +116,13 @@ For the condenser, I designed a passive system requiring no power, using gravity
     woodworking: [
         {
             title: "Wooden Pergola",
+            summary: "A 13 × 9 ft backyard pergola, built from post holes to finish.",
+            stats: [
+                { value: "13 × 9 × 8 ft", label: "Footprint and height" },
+                { value: "$1,000", label: "Budget" },
+                { value: "1 month", label: "Design and build" }
+            ],
+            skills: ["Structural Design", "Concrete Foundations", "Drainage and Site Prep", "Leveling and Layout", "Carpentry", "Project Budgeting"],
             images: [
                 "images/Pergola1.jpg",
                 "images/Pergola2.jpg",
@@ -98,6 +139,13 @@ For the condenser, I designed a passive system requiring no power, using gravity
         },
         {
             title: "Recycled Desk",
+            summary: "A take-apart desk built from reclaimed pergola wood and salvaged office desk legs.",
+            stats: [
+                { value: "$30", label: "In materials" },
+                { value: "3 parts", label: "Breaks down for moving" },
+                { value: "1 week", label: "Build time" }
+            ],
+            skills: ["Reclaimed Materials", "Design for Disassembly", "Drawer Fitting", "Sanding and Finishing", "Carpentry"],
             images: [
                 "images/WoodenDesk.JPG"
             ],
@@ -109,10 +157,16 @@ For the condenser, I designed a passive system requiring no power, using gravity
                 <h3> Results </h3>
                 <p>The finished desk took about a week to build and has held up well through multiple moves, thanks to the disassemble/reassemble design. Beyond the finished product, the project was a good exercise in working precisely with imperfect, reclaimed materials, and in designing for a real constraint (portability) from the start rather than as an afterthought.</p>
             `
-               
         },
         {
             title: "No Screw Wooden Shelf",
+            summary: "A five-tier festival shelf built for a client and held together entirely with dowels.",
+            stats: [
+                { value: "0", label: "Screws" },
+                { value: "5", label: "Tiers" },
+                { value: "$200", label: "Budget, 2 weeks" }
+            ],
+            skills: ["Dowel Joinery", "Client Requirements", "Design for Disassembly", "Precision Layout", "Carpentry"],
             images: [
                 "images/WoodShelf1.jpg"
             ],
@@ -127,6 +181,13 @@ For the condenser, I designed a passive system requiring no power, using gravity
         },
         {
             title: "Adirondack Chairs",
+            summary: "A matching king and queen pair of Adirondack chairs, one built by hand and one with power tools.",
+            stats: [
+                { value: "2", label: "Chairs, king and queen" },
+                { value: "$150", label: "Per chair" },
+                { value: "2 weeks", label: "Per chair" }
+            ],
+            skills: ["Hand Tools", "Power Tools", "Miter Saw", "Precision Measuring", "Custom Detailing", "Carpentry"],
             images: [
                 "images/ADChairs1.jpg"
             ],
@@ -144,6 +205,13 @@ For the condenser, I designed a passive system requiring no power, using gravity
     rd: [
         {
             title: "Wind Load Testing Rig",
+            summary: "A custom test rig at SharkNinja that measures the real force produced by airflow products.",
+            stats: [
+                { value: "0.01 N", label: "Measurement resolution" },
+                { value: "100+", label: "Prototype configurations tested" },
+                { value: "R&D co-op", label: "SharkNinja" }
+            ],
+            skills: ["Test Rig Design", "Load Cell Calibration", "Arduino", "Data Acquisition", "80/20 Framing", "Mechanical Constraint Design", "Competitor Benchmarking"],
             images: [
                 "images/SNRig1.jpg",
                 "images/SNRig3.jpg",
@@ -156,7 +224,6 @@ For the condenser, I designed a passive system requiring no power, using gravity
                 <p>I built the rig from 80-20 aluminum framing with an integrated load cell and an Arduino-based data acquisition system, displaying live force readings in Newtons on an LCD screen. The system could report instantaneous force as well as track force over time, which let the team see not just how strong the airflow was, but how consistent it stayed, revealing things like motor steadiness and turbulence in the air stream that a single static reading would miss. I calibrated the load cell using a set of known reference weights to make sure the force readings were accurate before collecting any product data. A key part of the mechanical design was constraining the load plate so it could only move slightly along a single vertical axis, with motion in the other two directions locked out, ensuring every force reading reflected true downward airflow force rather than noise from the plate shifting or wobbling. Getting that constraint right, along with dialing in a clean calibration, was the trickiest part of the build, since any freedom of movement outside the intended axis would have introduced error into every measurement taken afterward.</p>
                 <h3> Results </h3>
                 <p>The rig produced reliable, quantified wind load data that the team used to validate design decisions on products in development, as well as to benchmark performance directly against competitor products. Beyond the immediate use case, the project gave me hands-on experience designing a precise measurement system from the ground up, where the mechanical constraint of the rig mattered just as much as the sensor and code driving it.</p>
-                
             `
         }
     ]
@@ -197,6 +264,47 @@ function showSection(sectionId) {
     window.scrollTo(0, 0);
 }
 
+// FUNCTION: Create a clickable image that opens in the lightbox
+function createProjectImage(imagePath, altText, lazy) {
+    const img = document.createElement('img');
+    img.src = imagePath;
+    img.alt = altText;
+    if (lazy) img.loading = 'lazy';
+    img.onclick = () => openLightbox(imagePath);
+    return img;
+}
+
+// FUNCTION: Turn the description HTML into collapsible sections.
+// Each <h3> starts a new section; the paragraphs after it go inside.
+// The first section (What) starts open.
+function buildStorySections(descriptionHtml) {
+    const temp = document.createElement('div');
+    temp.innerHTML = descriptionHtml;
+    
+    const output = document.createDocumentFragment();
+    let currentSection = null;
+    
+    Array.from(temp.children).forEach(el => {
+        if (el.tagName === 'H3') {
+            currentSection = document.createElement('details');
+            currentSection.className = 'story-section';
+            const heading = document.createElement('summary');
+            heading.textContent = el.textContent.trim();
+            currentSection.appendChild(heading);
+            output.appendChild(currentSection);
+        } else if (currentSection) {
+            currentSection.appendChild(el);
+        } else {
+            output.appendChild(el);
+        }
+    });
+    
+    const firstSection = output.querySelector('.story-section');
+    if (firstSection) firstSection.open = true;
+    
+    return output;
+}
+
 // FUNCTION: Display a specific project detail page
 function showProject(category, index) {
     currentCategory = category;
@@ -205,52 +313,72 @@ function showProject(category, index) {
     // Get project data
     const project = projectData[category][index];
     
-    // Update project title
+    // Title and one-line summary
     document.getElementById('project-title').textContent = project.title;
+    const summaryEl = document.getElementById('project-summary');
+    summaryEl.textContent = project.summary || '';
+    summaryEl.style.display = project.summary ? '' : 'none';
     
-    // Update project description
-    document.getElementById('project-description').innerHTML = project.description;
-    
-// Clear and populate images
-    const leftStack = document.getElementById('image-stack-left');
-    const rightStack = document.getElementById('image-stack-right');
-    const imagesContainer = document.getElementById('project-images-container');
-    const existingSingleImg = imagesContainer.querySelector('.single-image');
-    if (existingSingleImg) existingSingleImg.remove();
-    leftStack.innerHTML = '';
-    rightStack.innerHTML = '';
-    
-    if (project.images.length === 1) {
-        // Single image: bigger, centered, not split into stacks
-        imagesContainer.classList.add('single-image-mode');
-        leftStack.style.display = 'none';
-        rightStack.style.display = 'none';
+    // Headline stats
+    const statsEl = document.getElementById('project-stats');
+    statsEl.innerHTML = '';
+    (project.stats || []).forEach(stat => {
+        const statBox = document.createElement('div');
+        statBox.className = 'stat';
         
-        const img = document.createElement('img');
-        img.src = project.images[0];
-        img.alt = project.title;
-        img.className = 'single-image';
-        img.onclick = () => openLightbox(project.images[0]);
-        imagesContainer.appendChild(img);
-    } else {
-        // Multiple images: alternate between two stacks as before
-        imagesContainer.classList.remove('single-image-mode');
-        leftStack.style.display = 'flex';
-        rightStack.style.display = 'flex';
+        const value = document.createElement('span');
+        value.className = 'stat-value';
+        value.textContent = stat.value;
         
-        project.images.forEach((imagePath, i) => {
-            const img = document.createElement('img');
-            img.src = imagePath;
-            img.alt = project.title;
-            img.onclick = () => openLightbox(imagePath);
-            
-            if (i % 2 === 0) {
-                leftStack.appendChild(img);
-            } else {
-                rightStack.appendChild(img);
-            }
+        const label = document.createElement('span');
+        label.className = 'stat-label';
+        label.textContent = stat.label;
+        
+        statBox.appendChild(value);
+        statBox.appendChild(label);
+        statsEl.appendChild(statBox);
+    });
+    statsEl.style.display = statsEl.children.length ? '' : 'none';
+    
+    // Skill tags
+    const skillsEl = document.getElementById('project-skills');
+    skillsEl.innerHTML = '';
+    if (project.skills && project.skills.length) {
+        const heading = document.createElement('h2');
+        heading.className = 'skills-heading';
+        heading.textContent = 'Skills and tools';
+        
+        const list = document.createElement('ul');
+        list.className = 'skill-list';
+        project.skills.forEach(skill => {
+            const tag = document.createElement('li');
+            tag.className = 'skill-tag';
+            tag.textContent = skill;
+            list.appendChild(tag);
         });
+        
+        skillsEl.appendChild(heading);
+        skillsEl.appendChild(list);
     }
+    
+    // What / How / Results as collapsible sections
+    const storyEl = document.getElementById('project-description');
+    storyEl.innerHTML = '';
+    storyEl.appendChild(buildStorySections(project.description));
+    
+    // Hero image (first image)
+    const heroEl = document.getElementById('project-hero');
+    heroEl.innerHTML = '';
+    heroEl.appendChild(createProjectImage(project.images[0], project.title, false));
+    
+    // Gallery (remaining images)
+    const galleryEl = document.getElementById('project-gallery');
+    galleryEl.innerHTML = '';
+    const galleryImages = project.images.slice(1);
+    galleryImages.forEach(imagePath => {
+        galleryEl.appendChild(createProjectImage(imagePath, project.title, true));
+    });
+    galleryEl.style.display = galleryImages.length ? '' : 'none';
     
     // Show the project detail section
     showSection('project-detail');
@@ -319,10 +447,3 @@ document.addEventListener('DOMContentLoaded', function() {
     showSection('home');
     updateNavVisibility('home');
 });
-
-// INSTRUCTIONS FOR EDITING:
-// 1. Edit projectData object above with your actual project information
-// 2. Replace image paths with your actual image filenames
-// 3. Replace placeholder text with your real project descriptions
-// 4. Update the email in copyEmail() function with your actual email
-// 5. Make sure image filenames match exactly what you upload to images/ folder
