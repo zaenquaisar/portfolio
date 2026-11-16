@@ -635,12 +635,29 @@ body {
     box-shadow: 0 5px 20px var(--shadow);
     cursor: pointer;
 }
+/* Tall (vertical) hero photos: the image column shrinks to fit the photo */
+.project-top.is-portrait {
+    grid-template-columns: fit-content(55%) minmax(0, 1fr);
+}
 
+.project-top.is-portrait .project-hero img {
+    width: auto;
+    max-width: 100%;
+}
+
+.project-top.is-portrait .project-info {
+    max-width: 640px;
+}
 /* Phones and narrow screens: stack everything in one column */
 @media (max-width: 900px) {
-    .project-top {
+    .project-top,
+    .project-top.is-portrait {
         grid-template-columns: 1fr;
         gap: 2rem;
+    }
+
+    .project-top.is-portrait .project-hero img {
+        margin: 0 auto;
     }
 
     .project-info h1 {
