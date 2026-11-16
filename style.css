@@ -432,12 +432,28 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.3);
+    flex-direction: column;
+    padding: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.45);
     transition: background-color 0.3s ease;
 }
 
 .project-card:hover .card-overlay {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* One-line summary under each project card title */
+.project-card .card-overlay h3 {
+    padding: 0 0 0.5rem;
+}
+
+.card-summary {
+    max-width: 32ch;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: center;
+    color: var(--on-image);
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.9);
 }
 
 .card-overlay h3 {
