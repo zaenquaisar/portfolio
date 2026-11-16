@@ -492,7 +492,12 @@ body {
     box-shadow: 0 5px 20px var(--shadow);
     cursor: pointer;
 }
-
+.hero-caption {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-align: center;
+}
 .project-info h1 {
     font-size: 2.5rem;
     line-height: 1.2;
