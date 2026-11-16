@@ -34,7 +34,7 @@ const projectData = {
                 <p>Working with a budget of about $800, I built the system around a DC motor with a quadrature encoder for azimuth and a microstepped stepper motor for elevation, both driven through worm gears and monitored via limit switches. Two 3-channel current sensors monitor current and voltage across the power system in real time. Power flows from the solar panel through a 4S LiPo battery and BMS, then out through regulators providing 5V, 9V, 12V, and 20V. 12V is dedicated to motor control, while the rest feed USB-C power delivery modules. The system runs on an ESP32 microcontroller with custom firmware across modular subsystems, including motor control, power management, sun-position calculation, and safety. I modeled the mechanical design in SolidWorks and the electronics schematic in KiCad.</p>
                 <p>The two biggest challenges were elevation control and hardware debugging. Getting a motor/gear subsystem with a small footprint that could handle full panel torque at the lowest elevation angle took several iterations of motor and gear sizing, guided by SolidWorks modeling. On the hardware side, I hit repeated ESP32 crash loops from boot-strapping pin conflicts, and the power sensors weren't showing up on the I2C bus despite wiring and voltages checking out. I worked through both systematically, testing different I2C speeds, isolating sensors individually, and checking GPIO behavior at the bit level to separate hardware from software causes.</p>
                 <h3> Results </h3>
-                <p>The finished system is able to track the sun with accuracy within 2 degrees and delivers regulated power through USB-C at three different voltage levels, enabling it to charge a phone or a laptop through clean energy, something I wanted to do since the limitations I ran into with my wind turbine project. Beyond the finished build, this project deepened my understanding of embedded systems and the debugging side of engineering as well as the design side. Tracing hardware faults through a full stack of firmware, wiring and power electronics takes a lot of patience, and I ended the project being much more comfortable diagnosing issues instead of building around them. </p>
+                <p>The finished system is able to track the sun with accuracy with less than 4 degrees of error and delivers regulated power through USB-C at three different voltage levels, enabling it to charge a phone or a laptop through clean energy, something I wanted to do since the limitations I ran into with my wind turbine project. Beyond the finished build, this project deepened my understanding of embedded systems and the debugging side of engineering as well as the design side. Tracing hardware faults through a full stack of firmware, wiring and power electronics takes a lot of patience, and I ended the project being much more comfortable diagnosing issues instead of building around them. </p>
             `
         },
         {
@@ -88,7 +88,7 @@ const projectData = {
             `
         },
         {
-            title: "Sugarcane Bagasse Filtering System",
+            title: "Sugarcane Bagasse Filtration System",
             summary: "A cost-backed proposal to stop rocks in sugarcane fuel from shutting down a Brazilian power plant.",
             stats: [
                 { value: "R$27k/hr", label: "Downtime cost identified" },
@@ -107,7 +107,7 @@ const projectData = {
                 <p>As part of a three-person project during a one-month sustainable energy study abroad program in Brazil, our team analyzed a real problem at Com Bio, a plant burning sugarcane bagasse for steam energy: rocks mixed into the bagasse during transport were damaging feed machinery and causing costly downtime. My contributions were proposing an industrial blower based winnowing solution, and working on the combustion chemistry, energy calculations, and cost analysis behind our proposals.</p>
                 <h3> How </h3>
                 <p>After an onsite visit to see the plant's conveyor and boiler system firsthand, we worked with engineering directors to estimate cost and downtime figures, since detailed operational data wasn't readily available. I calculated the boiler's effective energy extraction using bagasse's heating value and estimated efficiency, and proposed a mechanized winnowing solution that uses directed airflow to separate lighter bagasse from heavier rocks as they fall off the conveyor, then ran the cost analysis comparing this against a mechanical destoner alternative.</p>
-                <h3> Result </h3>
+                <h3> Results </h3>
                 <p>We found that rock related downtime costs Com Bio roughly R$27,000 (about $4,650) per hour in lost revenue, and that both the blower and destoner solutions were financially strong, each projected to net about R$17,395 in hourly profit after operating costs. Working with real plant constraints and limited data pushed me to build sound engineering estimates from incomplete information and tie technical solutions directly to financial impact.</p>
             `
         }
@@ -425,7 +425,7 @@ function closeLightbox() {
 }
 // FUNCTION: Copy email to clipboard with visual feedback
 function copyEmail() {
-    const email = "quaisar.z@northeastern.edu"; // EDIT: Your actual email
+    const email = "zaenquaisar@hotmail.com"; // EDIT: Your actual email
     
     // Copy to clipboard
     navigator.clipboard.writeText(email).then(function() {
