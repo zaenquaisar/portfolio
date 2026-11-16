@@ -832,3 +832,9 @@ body {
         margin: 0 auto;
     }
 }
+/* Touch devices (iPhone, iPad): fixed backgrounds aren't supported */
+@media (hover: none), (max-width: 900px) {
+    #home {
+        background-attachment: scroll;
+    }
+}
