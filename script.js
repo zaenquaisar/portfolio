@@ -441,9 +441,23 @@ function copyEmail() {
         console.error('Failed to copy email: ', err);
     });
 }
-
+// FUNCTION: Add each project's one-line summary to its card on the landing pages
+function fillCardSummaries() {
+    document.querySelectorAll('.project-card').forEach(card => {
+        const match = (card.getAttribute('onclick') || '').match(/showProject\('(\w+)',\s*(\d+)\)/);
+        if (!match) return;
+        const project = projectData[match[1]] && projectData[match[1]][Number(match[2])];
+        if (!project || !project.summary) return;
+        
+        const summary = document.createElement('p');
+        summary.className = 'card-summary';
+        summary.textContent = project.summary;
+        card.querySelector('.card-overlay').appendChild(summary);
+    });
+}
 // INITIALIZATION: Set up page when it loads
 document.addEventListener('DOMContentLoaded', function() {
     showSection('home');
     updateNavVisibility('home');
+    fillCardSummaries();
 });
