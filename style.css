@@ -615,7 +615,10 @@ body {
     color: var(--text-body);
     margin-bottom: 1.5rem;
 }
-
+.story-section strong {
+    color: var(--text);
+    font-weight: 700;
+}
 /* Gallery: remaining images in two large columns, no cropping */
 .project-gallery {
     columns: 2;
