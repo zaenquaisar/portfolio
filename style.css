@@ -284,7 +284,18 @@ body {
     color: var(--text-body);
     margin-bottom: 1.5rem;
 }
-
+/* Highlighted values blurb at the top of About Me */
+.about-content .about-blurb {
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.6;
+    color: var(--text);
+    background-color: var(--surface);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 4px 4px 0;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+}
 /* STANDARD BUTTONS */
 .btn-primary {
     background-color: var(--accent);
@@ -807,4 +818,17 @@ body {
     max-height: 90%;
     border-radius: 4px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+/* About Me on phones: photo stacks above the text */
+@media (max-width: 900px) {
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-image {
+        position: static;
+        max-width: 400px;
+        margin: 0 auto;
+    }
 }
