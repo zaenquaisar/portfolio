@@ -1,3 +1,35 @@
+/* THEME VARIABLES - Change colors here and they update everywhere */
+:root {
+    /* Page */
+    --bg: #f4f6f9;              /* main page background (cool light gray) */
+    --surface: #ffffff;         /* navbar, dropdown, raised elements */
+    --text: #1b2330;            /* headings and primary text */
+    --text-body: #3a4352;       /* paragraph text */
+    --text-muted: #6b7380;      /* secondary text */
+    --border-subtle: #dde2e9;   /* thin dividers */
+
+    /* Accent */
+    --accent: #2a5a8f;          /* navy: buttons, borders, links */
+    --accent-hover: #1f4570;    /* darker navy for hover states */
+    --accent-success: #4a9d5f;  /* green: project card hover, copy notice */
+    --on-accent: #ffffff;       /* text sitting on accent-colored buttons */
+
+    /* Text on top of photos (home page, card overlays) */
+    --on-image: #ffffff;
+    --on-image-title: #fffef0;
+
+    /* Footer (kept dark as an anchor at the bottom of the page) */
+    --footer-bg: #1a2332;
+    --footer-text: #e8e8e8;
+    --footer-muted: #9aa3b0;
+    --footer-link-hover: #7fb0e0;
+
+    /* Shadows (lighter than before so they suit a light page) */
+    --shadow: rgba(27, 35, 48, 0.15);
+    --shadow-accent: rgba(42, 90, 143, 0.3);
+    --shadow-accent-strong: rgba(42, 90, 143, 0.45);
+}
+
 /* GLOBAL STYLES */
 * {
     margin: 0;
@@ -7,19 +39,24 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #1a2332;
-    color: #e8e8e8;
+    background-color: var(--bg);
+    color: var(--text);
     line-height: 1.6;
 }
 
-/* NAVIGATION BUTTONS - Floating text, no background bar */
+/* NAVIGATION BAR - Solid light bar so links stay readable on a light page */
 .navbar {
     display: none; /* Hidden by default, shown by JavaScript on non-home pages */
     position: fixed;
-    top: 20px;
+    top: 0;
+    left: 0;
     width: 100%;
     z-index: 1000;
-    pointer-events: none; /* Allow clicks to pass through empty space */
+    padding: 0.75rem 0;
+    background-color: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border-subtle);
 }
 
 .nav-content {
@@ -29,59 +66,58 @@ body {
     gap: 2rem;
     align-items: center;
     justify-content: center;
-    pointer-events: auto; /* Re-enable clicks on actual content */
 }
 
 .nav-link {
-    color: #e8e8e8;
+    color: var(--text);
     text-decoration: none;
     padding: 0.5rem 1rem;
     background: none;
     border: none;
     cursor: pointer;
     font-size: 1rem;
+    font-family: inherit;
     transition: color 0.3s ease;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .nav-link:hover {
-    color: #2a5a8f;
+    color: var(--accent);
 }
 
 /* DROPDOWN MENU */
 .dropdown {
     position: relative;
-    pointer-events: auto;  
 }
 
 .dropdown-btn {
     background: none;
     border: none;
-    color: #e8e8e8;
+    color: var(--text);
     font-size: 1rem;
+    font-family: inherit;
     cursor: pointer;
     padding: 0.5rem 1rem;
     transition: color 0.3s ease;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .dropdown-btn:hover {
-    color: #2a5a8f;
+    color: var(--accent);
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: rgba(13, 21, 32, 0.95);
+    background-color: var(--surface);
     min-width: 180px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 8px 16px var(--shadow);
+    border: 1px solid var(--border-subtle);
     border-radius: 4px;
-    top: 100%;  /* ADD THIS - positions at bottom of button */
-    margin-top: -5px;  /* ADD THIS - overlap button slightly */
+    top: 100%;          /* positions at bottom of button */
+    margin-top: -5px;   /* overlaps button slightly so hover isn't lost */
     overflow: hidden;
     left: 50%;
     transform: translateX(-50%);
-    padding-top: 5px;  /* ADD THIS - offset the negative margin visually */
+    padding-top: 5px;   /* offsets the negative margin visually */
 }
 
 .dropdown:hover .dropdown-content,
@@ -90,7 +126,7 @@ body {
 }
 
 .dropdown-content a {
-    color: #e8e8e8;
+    color: var(--text);
     padding: 0.75rem 1rem;
     text-decoration: none;
     display: block;
@@ -98,8 +134,8 @@ body {
 }
 
 .dropdown-content a:hover {
-    background-color: #2a5a8f;
-    color: #fffef0;
+    background-color: var(--accent);
+    color: var(--on-accent);
 }
 
 /* SECTION VISIBILITY - Only one section visible at a time */
@@ -125,7 +161,7 @@ body {
     padding-bottom: 100px;
 }
 
-/* HOME SECTION - Full background image */
+/* HOME SECTION - Full background image (text stays white over the photo) */
 #home {
     background-image: url('images/Cover3.JPG');
     background-size: cover;
@@ -168,21 +204,21 @@ body {
 
 .home-text h1 {
     font-size: 3.5rem;
-    color: #fffef0;
+    color: var(--on-image-title);
     margin-bottom: 1rem;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
 .home-text h2 {
     font-size: 1.8rem;
-    color: #ffffff;
+    color: var(--on-image);
     margin-bottom: 0.5rem;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 .home-text h3 {
     font-size: 1.3rem;
-    color: #ffffff;
+    color: var(--on-image);
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
 }
 
@@ -195,10 +231,11 @@ body {
 }
 
 .btn-home {
-    background-color: #2a5a8f;
-    color: #fffef0;
+    background-color: var(--accent);
+    color: var(--on-accent);
     padding: 1rem 2.5rem;
     font-size: 1.2rem;
+    font-family: inherit;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -207,7 +244,7 @@ body {
 }
 
 .btn-home:hover {
-    background-color: #1f4570;
+    background-color: var(--accent-hover);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(42, 90, 143, 0.6);
 }
@@ -231,40 +268,41 @@ body {
 .about-image img {
     width: 100%;
     border-radius: 8px;
-    border: 2px solid #2a5a8f;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    border: 2px solid var(--accent);
+    box-shadow: 0 5px 20px var(--shadow);
 }
 
 .about-content h1 {
     font-size: 2.5rem;
-    color: #fffef0;
+    color: var(--text);
     margin-bottom: 2rem;
 }
 
 .about-content p {
     font-size: 1.1rem;
     line-height: 1.9;
-    color: #c8c8c8;
+    color: var(--text-body);
     margin-bottom: 1.5rem;
 }
 
 /* STANDARD BUTTONS */
 .btn-primary {
-    background-color: #2a5a8f;
-    color: #fffef0;
+    background-color: var(--accent);
+    color: var(--on-accent);
     padding: 1rem 3rem;
     font-size: 1.2rem;
+    font-family: inherit;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(42, 90, 143, 0.4);
+    box-shadow: 0 4px 15px var(--shadow-accent);
 }
 
 .btn-primary:hover {
-    background-color: #1f4570;
+    background-color: var(--accent-hover);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(42, 90, 143, 0.6);
+    box-shadow: 0 6px 20px var(--shadow-accent-strong);
 }
 
 /* PROJECTS CONTAINER */
@@ -277,7 +315,7 @@ body {
 .projects-container h1 {
     text-align: center;
     font-size: 2.5rem;
-    color: #fffef0;
+    color: var(--text);
     margin-bottom: 3rem;
 }
 
@@ -296,14 +334,14 @@ body {
     overflow: hidden;
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 2px solid #2a5a8f;
+    border: 2px solid var(--accent);
     border-radius: 4px;
 }
 
 .category-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(42, 90, 143, 0.5);
-    border-color: #fffef0;
+    box-shadow: 0 15px 40px var(--shadow-accent-strong);
+    border-color: var(--accent-hover); /* was cream, which vanishes on a light page */
 }
 
 .category-card img {
@@ -334,7 +372,7 @@ body {
 
 .card-overlay h2 {
     font-size: 2rem;
-    color: #ffffff;
+    color: var(--on-image);
     text-align: center;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
     z-index: 2;
@@ -355,14 +393,14 @@ body {
     overflow: hidden;
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 2px solid #2a5a8f;
+    border: 2px solid var(--accent);
     border-radius: 4px;
 }
 
 .project-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(42, 90, 143, 0.4);
-    border-color: #4a9d5f;
+    box-shadow: 0 12px 30px var(--shadow-accent);
+    border-color: var(--accent-success);
 }
 
 .project-card img {
@@ -393,7 +431,7 @@ body {
 
 .card-overlay h3 {
     font-size: 1.5rem;
-    color: #ffffff;
+    color: var(--on-image);
     text-align: center;
     padding: 1rem;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
@@ -432,8 +470,8 @@ body {
 .image-stack img {
     width: 100%;
     border-radius: 4px;
-    border: 2px solid #2a5a8f;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    border: 2px solid var(--accent);
+    box-shadow: 0 5px 20px var(--shadow);
 }
 
 .project-content {
@@ -442,14 +480,18 @@ body {
 
 .project-content h1 {
     font-size: 2.5rem;
-    color: #fffef0;
+    color: var(--text);
     margin-bottom: 1.5rem;
+}
+
+.project-content h3 {
+    color: var(--text);
 }
 
 .project-content p {
     font-size: 1.1rem;
     line-height: 1.9;
-    color: #c8c8c8;
+    color: var(--text-body);
     margin-bottom: 1.5rem;
 }
 
@@ -459,14 +501,15 @@ body {
     gap: 1.5rem;
     margin-top: 3rem;
     padding-top: 2rem;
-    border-top: 2px solid #2a5a8f;
+    border-top: 2px solid var(--accent);
 }
 
 .btn-nav {
-    background-color: #2a5a8f;
-    color: #fffef0;
+    background-color: var(--accent);
+    color: var(--on-accent);
     padding: 0.8rem 2rem;
     font-size: 1rem;
+    font-family: inherit;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -474,7 +517,7 @@ body {
 }
 
 .btn-nav:hover {
-    background-color: #1f4570;
+    background-color: var(--accent-hover);
     transform: translateX(5px);
 }
 
@@ -491,7 +534,7 @@ body {
 
 .resume-container h1 {
     font-size: 2.5rem;
-    color: #fffef0;
+    color: var(--text);
     margin-bottom: 2rem;
     text-align: center;
 }
@@ -506,21 +549,21 @@ body {
 .resume-image {
     width: 100%;
     max-width: 1200px;
-    border: 2px solid #2a5a8f;
+    border: 2px solid var(--accent);
     border-radius: 4px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 5px 20px var(--shadow);
 }
 
 .download-btn {
     text-decoration: none;
 }
 
-/* FOOTER - Contact info */
+/* FOOTER - Contact info (stays dark) */
 .footer {
-    background-color: #0d1520;
+    background-color: var(--footer-bg);
     padding: 2rem;
     text-align: center;
-    border-top: 2px solid #2a5a8f;
+    border-top: 2px solid var(--accent);
 }
 
 .contact-info {
@@ -533,7 +576,7 @@ body {
 }
 
 .email-text {
-    color: #e8e8e8;
+    color: var(--footer-text);
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -541,11 +584,11 @@ body {
 
 .email-text:hover {
     text-decoration: underline;
-    color: #2a5a8f;
+    color: var(--footer-link-hover);
 }
 
 .phone-text {
-    color: #e8e8e8;
+    color: var(--footer-text);
     font-size: 1rem;
 }
 
@@ -563,8 +606,8 @@ body {
     justify-content: center;
     width: 32px;
     height: 32px;
-    background-color: #2a5a8f;
-    color: #ffffff;
+    background-color: var(--accent);
+    color: var(--on-accent);
     border-radius: 4px;
     font-weight: bold;
     font-size: 1.1rem;
@@ -572,12 +615,12 @@ body {
 }
 
 .linkedin-link:hover .linkedin-icon {
-    background-color: #1f4570;
+    background-color: var(--accent-hover);
     transform: translateY(-2px);
 }
 
 .copyright {
-    color: #888;
+    color: var(--footer-muted);
     font-size: 0.9rem;
 }
 
@@ -587,8 +630,8 @@ body {
     bottom: 100px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #4a9d5f;
-    color: white;
+    background-color: var(--accent-success);
+    color: var(--on-accent);
     padding: 0.75rem 1.5rem;
     border-radius: 4px;
     opacity: 0;
@@ -597,7 +640,11 @@ body {
     z-index: 2000;
 }
 
-/* LIGHTBOX - Fullscreen image popup */
+.copy-notification.show {
+    opacity: 1;
+}
+
+/* LIGHTBOX - Fullscreen image popup (stays dark so photos pop) */
 .lightbox-overlay {
     display: none;
     position: fixed;
@@ -627,9 +674,6 @@ body {
     cursor: pointer;
 }
 
-.copy-notification.show {
-    opacity: 1;
-}
 /* SINGLE IMAGE PROJECTS - Bigger, centered image instead of split stacks */
 #project-images-container.single-image-mode {
     justify-content: center;
@@ -639,7 +683,7 @@ body {
     width: 100%;
     max-width: 550px;
     border-radius: 4px;
-    border: 2px solid #2a5a8f;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    border: 2px solid var(--accent);
+    box-shadow: 0 5px 20px var(--shadow);
     cursor: pointer;
 }
