@@ -357,10 +357,21 @@ function showProject(category, index) {
     storyEl.innerHTML = '';
     storyEl.appendChild(buildStorySections(project.description));
     
-    // Hero image (first image)
+       // Hero image (first image)
     const heroEl = document.getElementById('project-hero');
     heroEl.innerHTML = '';
-    heroEl.appendChild(createProjectImage(project.images[0], project.title, false));
+    const heroImg = createProjectImage(project.images[0], project.title, false);
+    
+    // Tall photos (taken vertically) get a narrower image column so they fill their box
+    const projectTop = document.querySelector('.project-top');
+    projectTop.classList.remove('is-portrait');
+    const checkOrientation = () => {
+        if (!heroImg.isConnected) return; // ignore images from a project we already left
+        projectTop.classList.toggle('is-portrait', heroImg.naturalHeight > heroImg.naturalWidth * 0.9);
+    };
+    heroImg.addEventListener('load', checkOrientation);
+    heroEl.appendChild(heroImg);
+    if (heroImg.complete && heroImg.naturalWidth) checkOrientation();
     
     // Gallery (remaining images)
     const galleryEl = document.getElementById('project-gallery');
