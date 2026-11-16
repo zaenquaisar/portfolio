@@ -195,24 +195,30 @@
         </div>
     </section>
 
-    <!-- INDIVIDUAL PROJECT PAGE TEMPLATE -->
+    <!-- INDIVIDUAL PROJECT PAGE TEMPLATE - Filled in by showProject() in script.js -->
     <section id="project-detail" class="section">
         <div class="project-detail-container">
-            <div class="project-images">
-                <div id="project-images-container">
-                    <div class="image-stack" id="image-stack-left"></div>
-                    <div class="image-stack" id="image-stack-right"></div>
+            <!-- Top: hero image on the left, quick-glance info on the right -->
+            <div class="project-top">
+                <div class="project-hero" id="project-hero"></div>
+                
+                <div class="project-info">
+                    <h1 id="project-title"></h1>
+                    <p class="project-summary" id="project-summary"></p>
+                    <div class="project-stats" id="project-stats"></div>
+                    <div class="project-skills" id="project-skills"></div>
                 </div>
             </div>
             
-            <div class="project-content">
-                <h1 id="project-title"></h1>
-                <div id="project-description"></div>
-                
-                <div class="project-nav">
-                    <button onclick="previousProject()" class="btn-nav">← Previous Project</button>
-                    <button onclick="nextProject()" class="btn-nav">Next Project →</button>
-                </div>
+            <!-- What / How / Results as collapsible sections -->
+            <div class="project-story" id="project-description"></div>
+            
+            <!-- Remaining images in a large two-column gallery -->
+            <div class="project-gallery" id="project-gallery"></div>
+            
+            <div class="project-nav">
+                <button onclick="previousProject()" class="btn-nav">← Previous Project</button>
+                <button onclick="nextProject()" class="btn-nav">Next Project →</button>
             </div>
         </div>
     </section>
